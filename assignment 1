@@ -102,11 +102,17 @@ d.match_type
 
 CLASS
 
-class service_facillity addmission{
+class service_facillity {
 
 int faccilty_id;
 string facility_name;
 double facility_price;
+arraylist<string> soprtlist=new arraylist<string>
+soprtlist.add("cricket")
+soprtlist.add("football")
+soprtlist.add("hockey")
+soprtlist.add("cbadminton")
+soprtlist.add("ckabaddi")
  boolean IsfacilityExist(){
  if (facility_name==list){
 
@@ -125,7 +131,8 @@ public void getFaciliyt(){
 if (IsfacilityExist())
 {
 
-if 
+s.o.p("employeee added with facility);
+}
    
 
 
