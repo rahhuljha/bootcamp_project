@@ -1,0 +1,186 @@
+PLAYER CLUB
+
+
+Entity of player club
+
+1.service
+2.membership
+3.charge/salary
+4.coach
+5.player
+6.captain
+7.activity
+8. match
+
+
+ADMISSION
+TOURNAMENT
+SERVICE_FACILLITY
+SPORT CLUB
+
+
+
+
+
+1.SERVICE_FACILLITY
+
+INDOOR service_facillity
+
+a.indorservice_id
+b.indorservice_name
+c.indorservice_price
+d.indorservice_date
+
+
+OUTDOOR service_facillity
+
+
+
+a.outdoorservice_id
+b.outdoorservice_name
+c.outdoorservice_price
+d.outdoorservice_date
+
+
+
+2.MEMBERSHIP
+
+
+a.membership_id
+b.membership_name
+c.membership_price
+d.membership_date
+
+
+3.CHARGE
+
+
+a.charge_id
+b.charge_name
+c.charge_price
+d.charge_date
+e.charge_type
+
+
+3.COACH
+
+
+a.coach_id
+b.coach_name
+c.coach_salary
+d.coach_type
+
+
+
+4.CAPTAIN
+
+
+a.captain_id
+b.captain_name
+c.captain_salary
+d.captain_type
+
+
+
+5.ACTIVITY
+
+
+a.activity_id
+b.activity_name
+c.activity_price
+d.activity_type
+
+
+6.MATCH
+
+
+a.match_id
+b.match_name
+c.match_price
+d.match_type
+
+
+CLASS
+
+class service_facillity addmission{
+
+int faccilty_id;
+string facility_name;
+double facility_price;
+ boolean IsfacilityExist(){
+ if (facility_name==list){
+
+return true;
+else 
+false;
+}
+
+
+
+getFaciliyt();
+
+public void getFaciliyt(){
+
+
+if (IsfacilityExist())
+{
+
+if 
+   
+
+
+
+
+
+
+
+
+
+
+
+
+class Admission extend service_facillity{
+
+
+  int playerid;
+  char player_name;
+  string player_address;
+  int age;
+   bollean  iselligible();
+  
+  iselligible(){
+
+
+  if(facility_price()){
+
+    if(age>18)
+     {
+     return true;
+     }
+
+
+    else false;
+
+}
+
+if ( iselligible())
+{
+
+s.o.p("candidate registerd"+id+name +address)
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
