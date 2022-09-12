@@ -178,6 +178,37 @@ s.o.p("candidate registerd"+id+name +address)
 
 
 }
+static, dynamic, atomic, composite, single valued,
+multi valued fields of a corresponding class.
+
+
+STATIC
+a.service_ID/NAME/
+b.membership_ID/NAME
+c.charge/salary_ID
+d.coach_ID/NAME
+e.player_ID/NAME
+f.captain_ID/NAME
+g.activity_ID/NAME
+h. match_ID/NAME
+i.player/coach gender
+
+
+DYNAMIC
+
+player age
+coach age
+memeber address
+player address
+price
+facility
+
+
+ATOMIC
+gender
+id
+
+CMPOSITE
 
 
 
