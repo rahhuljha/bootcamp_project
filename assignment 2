@@ -1,0 +1,103 @@
+package Distanceoff;
+
+public class point {
+	
+	
+	
+
+	    private double x;
+	    private double y;
+
+	  public point(double d, double e) {
+			// TODO Auto-generated constructor stub
+		  this.x = d;
+	        this.y = e;
+		
+		  
+		}
+
+	/*  public point(double d, double e) {
+			// TODO Auto-generated constructor stub
+	    	
+	    	 this.x = d;
+		        this.y = e;
+		}
+		
+		*/
+
+	/*	public void point (Double x, Double y){
+
+	        this.x = x;
+	        this.y = y;
+	    }
+*/
+	 /*   private static void main (String[] args) {
+	        point p1 = new point(7.4,8.7);
+	        point p2 = new point(8.9,9.3);
+	        double distance = Math.sqrt((p1.getx() - p2.getx()) *  (p1.getx() - p2.getx()) + 
+	                                    (p1.getx() - p2.getx()) *  (p1.getx() - p2.getx()));
+	        System.out.println(distance);
+
+	    }
+*/
+		public double getX() {
+			return x;
+		}
+
+		public void setX(double x) {
+			this.x = x;
+		}
+
+		public double getY() {
+			return y;
+		}
+
+		public void setY(double y) {
+			this.y = y;
+		}
+
+		@Override
+		public String toString() {
+			return "point [x=" + x + ", y=" + y + ", getX()=" + getX() + ", getY()=" + getY() + ", getClass()="
+					+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+		}
+
+		public void Adddist() {
+			// TODO Auto-generated method stub
+			
+		} 
+		
+		}
+
+  class DistanceCal{
+	
+	    //  private point p1;
+	   //   private point p2;
+
+		void   Adddist(point p1,point p2) {
+	        double distance = Math.sqrt((p1.getX() - p2.getX()) *  (p1.getX() - p2.getX()) + 
+	                                    (p1.getX() - p2.getX()) *  (p1.getX() - p2.getX()));
+	        System.out.println(distance);
+
+	
+	  }
+  }
+  
+  
+  class main{
+		
+	  public static void main (String[] args) {
+	      point p1 = new point(9.8,8.5);
+	       point p2 = new point(7.8,8.9);
+	      p1.Adddist();
+	      p2.Adddist();
+
+	
+	  }
+  }
+	
+	
+
+
+	
+	
