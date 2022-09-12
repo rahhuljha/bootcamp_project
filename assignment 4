@@ -1,0 +1,66 @@
+package Distanceoff;
+import java.util.Scanner;  
+
+public class FindAllError {
+	
+	
+	
+	
+	public  double getAbsoluteError1(int exvalue,int appvalue)
+    {
+    	double  absoluteerror ;
+    	absoluteerror=(appvalue+exvalue)/2;
+            
+    	return absoluteerror;
+    }
+	public double getRelativeError(int exvalue,int appvalue)
+    {
+    	double  absoluteerror ,relativerror;
+    	absoluteerror=(appvalue+exvalue)/2;
+    	relativerror=Math.abs((absoluteerror-exvalue)+(absoluteerror-appvalue))/2;
+    	
+            
+    	return relativerror;
+    }
+	
+	public double errorPercentage(int exvalue,int appvalue)
+    {
+    	double  percenterror ;
+    	
+    	double  absoluteerror ,relativerror;
+    	absoluteerror=(appvalue+exvalue)/2;
+    	relativerror=((absoluteerror-exvalue)+(absoluteerror-appvalue))/2;
+    	 percenterror=Math.abs(relativerror/absoluteerror*100);
+            
+    	return percenterror;
+    }
+
+class main{
+	
+	
+	public static void  main(String args[])     
+	{   
+	
+	
+	int exvalue,appvalue;
+	Scanner sc = new Scanner(System.in);
+	
+	
+	exvalue=sc.nextInt();
+	appvalue=sc.nextInt();
+	Finderror obj= new Finderror();
+	
+	obj.getAbsoluteError1(exvalue,appvalue);
+	obj. getRelativeError(exvalue,appvalue);
+	obj.errorPercentage(exvalue,appvalue);
+	
+	
+	
+	
+
+}
+}
+}
+	
+	
+	
