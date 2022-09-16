@@ -1,0 +1,361 @@
+package bill;
+
+public class Customer {
+	
+	
+	
+	private int id;    //customer id
+	private String name;     //customer name
+	private String phone; //customer phone
+	private int account;    //customer account
+	public double getAmmount;    //customer ammount
+	public Customer(int id, String name, String phone, int account) {
+		super();
+		this.id = id;             /* get acess from class because all variable is private  */
+		this.name = name;
+		this.phone = phone;
+		this.account = account;
+	}
+	
+	
+	public Customer() {
+		//default customer
+	}
+	@Override
+	public String toString() {      //to combine alll variable 
+		return "Customer [id=" + id + ", name=" + name + ", phone=" + phone + ", account=" + account + "]";
+	}
+      //getter and setter metod to acceess private variable
+
+	public int getId() {
+		return id;          //return id
+	}
+	public void setId(int id) {
+		this.id = id;      //     set id
+	}
+	public String getName() {
+		return name;     //get name
+	}
+	public void setName(String name) {
+		this.name = name;   //set name
+	}
+	public String getPhone() {
+		return phone;   //get phone
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;   //set phone
+	}
+	public int getAccount() {
+		return account;   //get account
+	}
+	public void setAccount(int account) {
+		this.account = account;    //set account
+	}
+
+}
+
+
+
+
+
+package bill;
+
+public class Customer {
+	
+	
+	
+	private int id;    //customer id
+	private String name;     //customer name
+	private String phone; //customer phone
+	private int account;    //customer account
+	public double getAmmount;    //customer ammount
+	public Customer(int id, String name, String phone, int account) {
+		super();
+		this.id = id;             /* get acess from class because all variable is private  */
+		this.name = name;
+		this.phone = phone;
+		this.account = account;
+	}
+	
+	
+	public Customer() {
+		//default customer
+	}
+	@Override
+	public String toString() {      //to combine alll variable 
+		return "Customer [id=" + id + ", name=" + name + ", phone=" + phone + ", account=" + account + "]";
+	}
+      //getter and setter metod to acceess private variable
+
+	public int getId() {
+		return id;          //return id
+	}
+	public void setId(int id) {
+		this.id = id;      //     set id
+	}
+	public String getName() {
+		return name;     //get name
+	}
+	public void setName(String name) {
+		this.name = name;   //set name
+	}
+	public String getPhone() {
+		return phone;   //get phone
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;   //set phone
+	}
+	public int getAccount() {
+		return account;   //get account
+	}
+	public void setAccount(int account) {
+		this.account = account;    //set account
+	}
+
+}
+
+
+
+package bill;
+
+import java.io.PrintStream;     ///imported printstram to print stram object
+import java.text.ParseException;  ///imported parse exception  to handle exception
+import java.text.SimpleDateFormat; // imported date to show the  date on which bill has been generated
+import java.util.ArrayList;    ///arraylist to get all variable
+import java.util.Date;  //util date
+import java.util.Iterator;   //to iterate the data
+import java.util.List;    // to take list
+import java.util.Scanner;  //to take user input
+
+
+
+
+
+public class Transaction {
+	List<Customer> custList;    //  list of custommer
+List<Bill> billList;     //list of bill
+Bill bill;
+Customer customer;
+Transaction(){}          //   default constructor 
+Transaction(List<Customer> custList, List<Bill> billList, Bill bill, Customer customer) {
+      this.custList = custList;     /* constructor to take data from customer bill  passed list of customer and bill */
+      this.billList = billList;
+      this.bill = bill;
+      this.customer = customer;
+}
+public static void getCustomer(int id ){
+    Customer[]cus=new Customer[10];
+    cus[0]= new Customer(1,"Ahmad","8755713848",120);
+    cus[1]= new Customer(2,"Khddan","8739584942",121);   /*method to get custommer data from customer custommerlist 
+    cus[2]= new Customer(3,"Khassn","8839584942",122);
+    cus[3]= new Customer(4,"Khaggn","8639584942",123);
+    cus[4]= new Customer(5,"Khassn","8839584942",124);
+    List<Customer>cusList=new ArrayList<>();
+   for(Customer obj:cus){
+       cusList.add(obj);          //iterated all value 
+    }
+   System.out.println(cus[id]);
+    Account[]ac=new Account[10];
+    ac[0]= new Account(120,1000.0);
+    ac[1]= new Account(121,1600.0);        //
+    ac[2]= new Account(122,1700.0);
+    ac[3]= new Account(123,1800.0);
+    ac[4]= new Account(124,1900.0);
+   
+       List<Account>acList=new ArrayList<>();
+       for(Account ob:ac)
+       {
+           acList.add(ob);
+       }
+   System.out.println(ac[id]);
+}
+
+public static void Paybill(int id) {
+	
+	
+	
+	Customer[]cus=new Customer[10];
+    cus[0]= new Customer(1,"Ahmad","8755713848",120);
+    cus[1]= new Customer(2,"Khddan","8739584942",121);
+    cus[2]= new Customer(3,"Khassn","8839584942",122);
+    cus[3]= new Customer(4,"Khaggn","8639584942",123);
+    cus[4]= new Customer(5,"Khassn","8839584942",124);
+    List<Customer>cusList=new ArrayList<>();
+    List<Bill> billList=new ArrayList<>();
+   for(Customer obj:cus){
+       cusList.add(obj);
+    }
+   System.out.println(cus[id]);
+    Account[]ac=new Account[10];
+       ac[0]= new Account(120,1000.0);
+       ac[1]= new Account(121,1600.0);
+       ac[2]= new Account(122,1700.0);
+       ac[3]= new Account(123,1800.0);
+       List<Account>acList=new ArrayList<>();
+       for(Account ob:ac)
+       {
+           acList.add(ob);
+       }
+   System.out.println(ac[id]);
+   
+   Bill[] bill=new Bill[10];
+   bill[0]= new Bill(1234,1,"20-12-2006",4000,true);
+   bill[1]= new Bill(1234,2,"22-12-2006",5000,true);
+   bill[2]= new Bill(1234,3,"27-12-2006",8000,false);
+   bill[3]= new Bill(1234,4,"28-12-2006",9000,false);
+   bill[4]= new Bill(1234,5,"29-12-2006",3000,true);
+   
+   List<Bill>bilList=new ArrayList<>();
+   
+   for(Bill ob:bill)
+   {
+       bilList.add(ob);
+   }
+System.out.println(bill[id]);
+
+
+	
+ 
+		
+		
+	     
+	   
+if(bilList.isEmpty()){
+	System.out.println("list is empty");
+	return;
+	}
+else {
+    Iterator<Bill>it=bilList.iterator();
+	while(it.hasNext()){
+		Bill obj=it.next();
+		
+				if(id==(obj.getusrId())) {
+					
+					
+					if(obj.isPaid()){
+						System.out.println(" payment done ");
+						System.out.println(obj.getAmmount());}
+						
+						else {
+							
+							System.out.println(" please pay now ");
+						}
+			
+		}
+		{
+		if(obj.isPaid()){
+			System.out.println(" payment done ");
+			System.out.println(obj.getAmmount());
+		
+		}
+	
+	
+		
+		
+	}
+
+	
+	}
+}
+}
+
+	
+	
+	public static void main(String[] args) {
+		
+		
+		 List<Customer>cust=new ArrayList<>();
+		 
+		 
+/*		 list1 = new ArrayList<Customer>();
+	      for(Customer cust:list1) {
+	      Customer customer1 = new Customer(12,"rahul","43434343",5343);
+	      Customer customer2 = new Customer(13,"mahul","434454343",5543);
+	      Customer customer3 = new Customer(14,"sahul","43444343",5323);
+	      
+	      list1.add (customer1);
+	      list1.add(customer2);	
+	      list1.add(customer3);	
+	   }
+		 List<Bill>list2=new ArrayList<>();
+		 
+	      for(Bill bill:list2) {
+	       bill = new Bill(12,2334,"22-03-2022",5343,1);
+	      Bill bill2 = new Bill(12,2334,"22-03-2022",5343,0);
+	      Bill bill3 = new Bill(12,2334,"22-03-2022",5343,1);
+	      
+	      list2.add(bill);
+	      list2.add(bill2);	
+	      list2.add(bill3);	
+	   }
+		 
+		 
+
+		Customer impl=new Customer();
+		Bill rid= new Bill();
+		
+		String response= "yes";
+		getAllBill();
+		getAllmycustomer();
+		
+		*/
+
+		String response;
+		do{
+		System.out.println("Enter operation to perform");
+		System.out.println("\n1. getcustomer\n2. Pay\n3. ");
+		Scanner scan=new Scanner(System.in);
+		int choice=scan.nextInt();
+		scan.nextLine();
+		
+
+		
+		
+		
+		int id;
+		switch(choice){
+			case 1:
+				System.out.println("Enter  id");
+				id=scan.nextInt();
+				
+				
+				getCustomer(id );
+				
+				break;
+			case 2:
+				System.out.println("Enter id");
+				id=scan.nextInt();
+				Paybill(id);
+				
+			
+			default:
+				System.out.println("Wrong choice entered");
+				break;
+		}
+		
+		System.out.println("Do you want to continue?(yes/no)?");
+		response = scan.nextLine();
+		}while(response.equalsIgnoreCase("yes"));
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
