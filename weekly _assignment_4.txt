@@ -1,0 +1,743 @@
+RAHUL KUMAR JHA
+
+
+package employeebill;
+
+import java.sql.Date;
+
+public class Bill {
+	
+	
+	 private int billId;
+	    private int consumerId;
+	    private Date billDate;
+	    private String billDescription;
+	    private double billAmount;
+	    
+	    Bill() {}
+
+
+
+	   public Bill(int billId, int consumerId, Date date, String billDescription, double billAmount) {
+	        super();
+	        this.billId = billId;
+	        this.consumerId = consumerId;
+	        this.billDate = date;
+	        this.billDescription = billDescription;
+	        this.billAmount = billAmount;
+	    }
+
+
+
+	   public int getBillId() {
+	        return billId;
+	    }
+
+
+
+	   public void setBillId(int billId) {
+	        this.billId = billId;
+	    }
+
+
+
+	   public int getConsumerId() {
+	        return consumerId;
+	    }
+
+
+
+	   public void setConsumerId(int consumerId) {
+	        this.consumerId = consumerId;
+	    }
+
+
+
+	   public Date  getBillDate() {
+	        return billDate;
+	    }
+
+
+
+	   public void setBillDate(Date billDate) {
+	        this.billDate = billDate;
+	    }
+
+
+
+	   public String getBillDescription() {
+	        return billDescription;
+	    }
+
+
+
+	   public void setBillDescription(String billDescription) {
+	        this.billDescription = billDescription;
+	    }
+
+
+
+	   public double getBillAmount() {
+	        return billAmount;
+	    }
+
+
+
+	   public void setBillAmount(double billAmount) {
+	        this.billAmount = billAmount;
+	    }
+
+
+
+	   @Override
+	    public String toString() {
+	        return "Bill [billId=" + billId+ ", consumerId=" + consumerId + ", billDate=" + billDate + ", billDescription="
+	                + billDescription + ", billAmount=" + billAmount + "]";
+	    }
+
+
+
+	public void setBillAmmount(double billAmount2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	
+	    
+	    
+
+
+
+	}
+
+
+
+
+
+
+
+package employeebill;
+
+import java.sql.Date;
+import java.util.List;
+
+public interface BillDao {
+	
+	
+	
+	    public int saveRecord(int consumerId,Date billDate,double billAmount,String billDescription);
+	    public int editBillRecord(int bill_Id,int customer_id,Date billDate,String billDescription,double billAmount);
+	    public int removeBillRecord(int id);
+	    public List<Bill> getAllBillRecord();
+	    public Bill getBillRecordById(int bill_Id);
+		
+	    
+
+}
+
+
+
+
+
+
+package employeebill;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Iterator;
+
+
+
+
+
+public class BillImpl implements BillDao {
+	
+	Bill[] bill=new Bill[100];
+	                                                  
+    static int index;
+	customer[] cust=new customer[100]; 
+
+	public int saveRecord( Bill bill_id,Bill  billdate1, Bill bill_ammount, Bill billDescription) {
+		// TODO Auto-generated method stub
+	
+	
+	bill[index++]=bill_id;
+	bill[index++]=billdate1;
+	bill[index++]= bill_ammount;
+	bill[index++]=billDescription;
+	 System.out.println("record added");
+	
+	
+	
+	  System.out.println("Here are the details of all employees");
+      for(int i=0;i<index;i++)
+          System.out.println(bill[i]);    
+	
+	
+	
+	
+
+
+   
+   
+		return 0;
+	}
+
+
+
+
+	
+	public int editBillRecord(int bill_Id, int customer_Id,  String billDescription, double billAmount) {
+		// TODO Auto-generated method stub
+		
+		
+		 for(int i=0;i<index;i++) {
+	            if(cust[i].getcustomerId()==customer_Id ){
+	            	bill[i].setBillId(bill_Id);
+	                
+	                bill[i].setBillDescription(billDescription);
+	                bill[i].setBillAmmount(billAmount);
+	               return 1;
+	            }
+	            
+	        }
+		return 0;
+	}
+
+
+
+
+	public int removeBillRecord(int bill_id) {
+		// TODO Auto-generated method stub
+		
+		int remove=0;
+		
+		 for (int i=0;i<index;i++) {
+	            if(bill[i].getBillId()==bill_id) {
+	                
+	                bill[i].setBillId(0);
+	            bill[i].setBillDate(null);
+	            bill[i].setBillDescription(null);
+	            bill[i].setBillAmmount(0.00);
+	           
+	            
+	            return remove++;
+	            }
+	            
+	            else {
+	            	 System.out.println("not found");
+	            	
+	            }
+	         
+	        
+	          
+	            
+	        }
+		 
+		 
+		 
+		  return remove;
+	}
+
+
+
+
+
+	public Bill getBillRecordById1(int bill_Id) {
+		// TODO Auto-generated method stub
+		 List<Bill> list=new ArrayList<>();
+		  Bill bill=null;
+	        boolean found=false;
+	        Iterator<Bill> it=list.iterator();
+	        while(it.hasNext()) {
+	            bill=it.next();
+	            if(bill.getBillId()==bill_Id) {
+	                System.out.println("record found");
+	                found=true;
+	                break;
+	            }
+	        }
+	        if(found)
+	            return bill;
+	        else
+	            return null;
+				
+		
+		
+	}
+
+
+
+
+	
+	//@SuppressWarnings("unchecked")
+	public List<Bill> getAllBillRecord() {
+		// TODO Auto-generated method stub
+		 List<Bill> bill = null;
+		List <Bill> list=new ArrayList<Bill>();
+		 Iterator<Bill> it=list.iterator();
+	        while(it.hasNext()) {
+	           
+	            bill = (List<Bill>) it.next();
+	            		
+	        }
+	               
+		
+		return  bill;
+		
+		
+	}
+
+
+
+
+
+	@Override
+	public int saveRecord(int consumerId, Date billDate, double billAmount, String billDescription) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+
+
+	public int saveRecord(int consumer_id, String billdate, double bill_ammount, String billDescription) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+
+
+	public int saveRecord(int consumer_id, java.util.Date billdate1, double bill_ammount, String billDescription) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+
+
+	@Override
+	public int editBillRecord(int bill_Id, int customer_id, Date billDate, String billDescription, double billAmount) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+
+
+	@Override
+	public Bill getBillRecordById(int bill_Id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+
+	public int editBillRecord(int bill_id1, int consumer_id1, java.util.Date billdate3, String billDescription1,
+			double bill_ammount1) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+    
+    
+    package employeebill;
+import java.sql.Connection;
+
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public  class DBConnection {
+	
+	
+	public static  Connection getConnection()throws 
+	
+	ClassNotFoundException,SQLException
+	{
+	
+	String driver="com.mysql.cj.jdbc.Driver";
+    String dburl="jdbc:mysql://localhost:3306/todayemployee";
+    String user="root";
+    String password="root";
+    
+    
+    
+   
+    	 
+
+     Class.forName(driver);
+     
+     //create the connection
+     Connection con=    DriverManager.getConnection(dburl,user,password);
+     
+     //Write and Execute query
+   
+     
+
+
+    return con;
+}
+}
+
+
+
+    
+    
+
+
+
+}
+	package employeebill
+//import java.sql.Date;
+//import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+//import java.io.*;
+
+//import java.util.Iterator;
+
+//import java.util.Optional;
+import java.util.Scanner;
+
+
+
+
+public class BillOPerationMain {
+	
+	
+	
+	
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		
+		
+		Bill bills=new Bill();
+		customer cust= new  customer();
+	DBConnection dbc =new DBConnection();
+		
+		List<Bill> bil1=new ArrayList<>();
+		List<customer> cust1=new ArrayList<>();
+		String g="12-2-2022";
+		
+		
+		 
+		   
+		Scanner sc =new Scanner(System.in);
+	        do {
+	      
+		//	int responce=sc.nextInt();
+			// Object responce=null;
+			
+	        	 //String responce="yes";
+				// Object responce=null;
+			
+	        	System.out.println("");
+				int ch;
+				System.out.println("\t1.insert-fetch \t\t2.Edit\t3.delete\t\t4.Fectchone\tt5.FetchAl");
+				System.out.println("enter your choice : ");
+			//	Scanner sc =new Scanner(System.in);
+				ch=sc.nextInt();
+       
+				   BillImpl obj=new BillImpl();
+				 
+				
+				switch(ch) {
+				case 1:
+					  System.out.println("Enter bill_id number : ");
+				      int   bill_id=sc.nextInt();
+				         sc.nextLine();
+				         System.out.println("Enter consumer_id : ");
+				        int  consumer_id=sc.nextInt();
+				     
+				       //  System.out.println("Enter Bill Date: ");
+				       // Date billDate=Date.valueOf(sc.nextLine());
+				        Scanner scanner = new Scanner(System.in);
+				        System.out.println("Enter the Date ");
+
+				        String billdate = scanner.next();
+
+				        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+				       java.util.Date billdate1=null;
+				        try {
+				            //Parsing the String
+				            billdate1 = dateFormat.parse(billdate);
+				        } catch (ParseException e) {
+				            // TODO Auto-generated catch block
+				            e.printStackTrace();
+				        }
+				       // System.out.println(date2);
+				     
+				         sc.nextLine();
+				         System.out.println("Enter BillDescription: ");
+				        String  billDescription=sc.nextLine();
+				         System.out.println("Enter billAmmount: ");
+				         double bill_ammount =sc.nextDouble();
+              Statement st=  dbc.createStatement();
+              
+              
+				  
+				String sql="insert into employee values("+bill_id+",'"+consumer_id+"',"+billdate1+",'"+billDescription+"','"+bill_ammount +"')";
+				  
+				String sql1="select * from employee";
+              ResultSet rs=st.executeQuery(sql1);
+               while(rs.next())
+                {
+                    System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getDouble(3)+" "+rs.getString(4)+rs.getInt(1));
+                }
+               int x= ((Object) st).executeUpdate(sql);
+               if (x>=0) {
+              	 System.out.println("1 row affected ");
+               }
+               else
+              	 System.out.println("no row affected ");
+				 
+					
+					int x=    obj.saveRecord(  consumer_id, billdate1,  bill_ammount,  billDescription); 
+				System.out.println("number of row affected: "+x);
+				
+				    break;
+				case 2:
+					System.out.println("Enter bill_id number : ");
+				    int   bill_id1=sc.nextInt();
+				       sc.nextLine();
+				       System.out.println("Enter consumer_id : ");
+				      int  consumer_id1=sc.nextInt();
+				   
+				     //  System.out.println("Enter Bill Date: ");
+				     // Date billDate=Date.valueOf(sc.nextLine());
+				     
+				   
+				       sc.nextLine();
+				       System.out.println("Enter BillDescription: ");
+				      String  billDescription1=sc.nextLine();
+				       System.out.println("Enter billAmmount: ");
+				       double bill_ammount1 =sc.nextDouble();
+				       System.out.println("Enter the Date ");
+
+				        String billdate = scanner.next();
+
+				        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+				       java.util.Date billdate1=null;
+				        try {
+				            //Parsing the String
+				            billdate1 = dateFormat.parse(billdate);
+				        } catch (ParseException e) {
+				            // TODO Auto-generated catch block
+				            e.printStackTrace();
+				        }
+				       // System.out.println(date2);
+				     
+				         sc.nextLine();
+				    
+
+				
+        
+				
+					
+					int y=	 obj.editBillRecord( bill_id1,  consumer_id1,   billDescription1,  bill_ammount1,billdate) ;
+						// TODO Auto-generated method stub
+						 System.out.println("number of row affected: "+y);
+						
+						
+						String sql3="update bill consumerid=("+consumerId+,billldate=('"+sqldate2+"'),billdescription=('"+billDescription+'"),("+bilammount"+)   where billid=   ("+id+"   )";                          
+					
+					ch=st.executeUpdate(sql3);
+					break;
+					
+				  
+				
+				   
+				    
+				case 3:
+					System.out.println("Enter bill_id number : ");
+				    int   bill_id3=sc.nextInt();
+					int z= obj.removeBillRecord( bill_id3);
+					
+					String sql4="delete form bill where billid=("+bill+))";
+                    ch=st.executeUpdate(sql3);
+					
+					
+				 
+				 break;
+				 
+				case 4:
+					System.out.println("Enter bill_id number : ");
+				    int   bill_id4=sc.nextInt();
+					obj.getBillRecordById(bill_id4);
+					String sqlqq=select * from bill"
+							 ResultSet rs=st.executeQuery(sqlq);
+		               while(rs.next())
+		                {
+		                    System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getDouble(3)+" "+rs.getString(4)+rs.getInt(5));
+		                }
+		               int x= ((Object) st).executeUpdate(sql);
+		               if (x>=0) {
+		              	 System.out.println("1 row affected ");
+		               }
+		               else
+		              	 System.out.println("no row affected ");
+						 
+							
+					
+				 
+				break;
+				case 5:
+					obj.getAllBillRecord();
+					String sqlqq=select * from bill where billid=("+bill+");
+							 ResultSet rs=st.executeQuery(sqlq);
+		               while(rs.next())
+		                {
+		                    System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getDouble(3)+" "+rs.getString(4)+rs.getInt(5));
+		                }
+		               int x= ((Object) st).executeUpdate(sql);
+		               if (x>=0) {
+		              	 System.out.println("1 row affected ");
+		               }
+		               else
+		              	 System.out.println("no row affected ");
+						 
+							
+					
+					default:
+				   
+					 System.out.println("do u want to continue if want write yes");  
+					break; 
+      
+				} 
+			}while(true);
+	}
+}
+     
+			
+               
+			 
+	
+
+
+package employeebill;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class BillTest {
+	
+	Bill b= new Bill();
+
+	
+
+	@Test
+	void testBillIntIntDateStringDouble() {
+		//fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetBillId() {
+		//fail("Not yet implemented");
+	assertEquals(0,b.getBillId());
+	}
+
+	@Test
+	void testGetConsumerId() {
+		fail("Not yet implemented");
+		assertEquals(0,b.getConsumerId());
+	}
+
+	@Test
+	void testGetBillDate() {
+		//fail("Not yet implemented");
+		assertEquals(0,b.getBillDate());
+		
+	}
+
+	@Test
+	void testGetBillDescription() {
+		//fail("Not yet implemented");
+		assertEquals(null,b.getBillDescription());
+		
+	}
+
+	@Test
+	void testGetBillAmount() {
+		//fail("Not yet implemented");
+		assertEquals(0,b.getBillAmount());
+	}
+
+	
+
+}
+
+
+
+
+
+package employeebill;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class BillImplTest {
+	BillImpl impl=new BillImpl();
+
+	@Test
+	void testSaveRecordBillBillBillBill() {
+		//fail("Not yet implemented");
+		assertEquals(0,impl.saveRecord(null, null, null, null));
+		
+	
+	}
+
+	@Test
+	void testEditBillRecordIntIntStringDouble() {
+	//	fail("Not yet implemented");
+		assertEquals(0,impl.editBillRecord(0, 0, null, null, 0.0));
+	}
+
+	@Test
+	void testRemoveBillRecord() {
+		//fail("Not yet implemented");
+		assertEquals(0,impl.removeBillRecord(0));
+	}
+
+	@Test
+	void testGetBillRecordById1() {
+		//fail("Not yet implemented");
+		assertEquals(0,impl.getAllBillRecord());
+	}
+
+	@Test
+	void testGetAllBillRecord() {
+		//fail("Not yet implemented");
+		assertEquals(0,impl.getAllBillRecord());
+	}
+
+	
+
+
+	
+	
+
+	
+		
+
+
+
+	
+	
+
+
+
