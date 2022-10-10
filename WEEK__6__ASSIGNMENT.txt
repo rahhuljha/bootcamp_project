@@ -1,0 +1,456 @@
+1.------BILLCALCULATOR--------BILLCALCULATOR-----------BILLCALCULATOR------------BILLCALCULATOR-----------BILLCALCULATOR-------------------BILLCALCULATOR-
+
+
+package Com.tut.calculater;
+
+public class BillCalculater {
+
+	private int units;
+	private double tax;
+	private double unitPrice;
+
+	public int getUnits() {
+		return units;
+	}
+
+	public void setUnits(int units) {
+		this.units = units;
+	}
+
+	public double getTax() {
+		return tax;
+	}
+
+	public void setTax(double tax) {
+		this.tax = tax;
+	}
+
+	public double getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(double unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
+	@Override
+	public String toString() {
+		return "BillCalculater [units=" + units + ", tax=" + tax + ", unitPrice=" + unitPrice + "]";
+	}
+
+	public BillCalculater() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public BillCalculater(int units, double tax, double unitPrice) {
+		super();
+		this.units = units;
+		this.tax = tax;
+		this.unitPrice = unitPrice;
+	}
+	
+	public double calculateBill() {
+		
+		//double c=units+tax+unitPrice;
+		return ((unitPrice+(unitPrice*tax))*units);
+		
+	}
+
+}
+
+----------SPRING.XML------SPRING.XML---------SPRING.XML-------SPRING.XML------------SPRING.XML---------SPRING.XML-------------SPRING.XML-----SPRING.XML
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans" 
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:p="http://www.springframework.org/schema/p"  
+  
+  xsi:schemaLocation="http://www.springframework.org/schema/beans  
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"> 
+    <bean id="bill" class="Com.tut.calculater.BillCalculater"> 
+     <cosntructer-arg="unit" value="100"></property>  
+      <constructer-arg="tax" value="123.6"></property>  
+     
+     
+     <constructer-arg="unitprice" value="567.8"></property>
+      
+    
+     
+    </bean> 
+      
+      
+      
+      
+       </beans> 
+
+
+-----------APP.JAVA--------APP.JAVA------APP.JAVA----------APP.JAVA------APP.JAVA------APP.JAVA-----APP.JAVA------APP.JAVA----------APP.JAVA--APP.JAVA
+
+
+
+package Com.tut.calculater;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+        
+       // ApplicationContext context=new ClassPathXmlApplicationContext("bill.xml");
+        @SuppressWarnings("resource")
+		ApplicationContext context=new ClassPathXmlApplicationContext("bill.xml");
+     //   ApplicationContext context1=new ClassPathXmlApplicationContext("Spring.xml");
+        BillCalculater bill=(BillCalculater) context.getBean("bill");
+       double c= bill.calculateBill();
+
+ System.out.println( "total bill pay"+c );
+       
+    }
+    }
+
+
+
+
+-----1-----TEST.JAVA------TEST.JAVA---------TEST.JAVA----------TEST.JAVA-------TEST.JAVA-------TEST.JAVA--------TEST.JAVA------TEST.JAVA--TEST.JAVA
+
+
+
+package Com.tut.billannotation;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+
+import junit.framework.TestCase;
+import unit.Book;
+
+public class Calculater extends TestCase {
+	
+	
+	
+	
+	  BillCalculator b=new BillCalculator();
+	    public void testCalculateBill() {
+	        assertEquals(1180.0,b.calculateBill(),1180.0);
+	    }
+
+
+	
+	
+	
+
+	private void assertEquals(double expected, Object calculateBill, double delta) {
+			// TODO Auto-generated method stub
+			
+		}
+
+
+
+	@Test
+	void testgettax(){
+		//fail("Not yet implemented");
+		
+		assertEquals(234.6,b.getTax());
+	}
+	
+	
+	@Test
+	void testgetUnits(){
+		//fail("Not yet implemented");
+		
+		assertEquals(234.6,b.getUnits());
+	}
+	@Test
+	void testgetunits(){
+		//fail("Not yet implemented");
+		
+		assertEquals(234.6,b.getUnits());
+	}
+
+
+
+
+
+----2-----BILLCALCULATOR.JAVA---2-----------BILLCALCULATOR.JAVA-----------BILLCALCULATOR.JAVA----2--------BILLCALCULATOR.JAVA--------BILLCALCULATOR.JAVA
+
+
+
+package Com.tut.billannotation;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+
+@Component
+
+public class BillCalculator {
+	
+	@Autowired
+	@Value("10")
+	private int units;
+	
+	
+	@Autowired
+	@Value("50.7")
+	private double tax;
+	
+	
+	@Autowired
+	@Value("7.8")
+	private double unitPrice;
+	
+	
+	
+	
+	
+
+	public int getUnits() {
+		return units;
+	}
+
+	public void setUnits(int units) {
+		this.units = units;
+	}
+
+	public double getTax() {
+		return tax;
+	}
+
+	public void setTax(double tax) {
+		this.tax = tax;
+	}
+
+	public double getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(double unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
+	@Override
+	public String toString() {
+		return "BillCalculater [units=" + units + ", tax=" + tax + ", unitPrice=" + unitPrice + "]";
+	}
+
+	public BillCalculator() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	
+	public BillCalculator(int units, double tax, double unitPrice) {
+		super();
+		this.units = units;
+		this.tax = tax;
+		this.unitPrice = unitPrice;
+	}
+
+	public double calculateBill() {
+		
+		
+		
+		
+		
+		return ((unitPrice+(unitPrice*tax))*units);
+		
+	}
+
+}
+
+-----------APP.JAVA MAIN CLASS ------  APP.JAVA MAIN CLASS ----------APP.JAVA MAIN CLASS ------APP.JAVA MAIN CLASS ------APP.JAVA MAIN CLASS ------------
+
+
+
+package Com.tut.billannotation;
+
+
+
+
+import org.springframework.beans.BeansException;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args ) throws BeansException 
+    {
+        System.out.println( "Hello World!" );
+        
+        AnnotationConfigApplicationContext annotationContext = new AnnotationConfigApplicationContext();
+
+		/*
+		 * Below line will scan the given package for Components. It will be
+		 * refreshed then to get bean from the same.
+		 */
+		annotationContext.scan("Com.tut.billannotation");
+		
+			annotationContext.refresh();
+		
+
+		/*
+		 * Here Class name is used to get the object of Address class
+		 */
+		BillCalculator add = annotationContext.getBean(BillCalculator.class);
+
+		/*
+		 * Here ID name is used to get the Object of Company Class
+		 */
+		 double c =add.calculateBill();
+		 System.out.println(c);
+
+	
+
+        
+        
+    }
+}
+
+
+----------TEST BILCALCULATER--------TEST BILCALCULATER-----------TEST BILCALCULATER-----------TEST BILCALCULATER---------TEST BILCALCULATER-----TEST BILCALCULATER
+
+
+
+package Com.tut.billannotation;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+
+import junit.framework.TestCase;
+import unit.Book;
+
+public class Calculater extends TestCase {
+	
+	
+	
+	
+	  BillCalculator b=new BillCalculator();
+	    public void testCalculateBill() {
+	        assertEquals(1180.0,b.calculateBill(),1180.0);
+	    }
+
+
+	
+	
+	
+
+	private void assertEquals(double expected, Object calculateBill, double delta) {
+			// TODO Auto-generated method stub
+			
+		}
+
+
+
+	@Test
+	void testgettax(){
+		//fail("Not yet implemented");
+		
+		assertEquals(234.6,b.getTax());
+	}
+	
+	
+	@Test
+	void testgetUnits(){
+		//fail("Not yet implemented");
+		
+		assertEquals(234.6,b.getUnits());
+	}
+	@Test
+	void testgetunits(){
+		//fail("Not yet implemented");
+		
+		assertEquals(234.6,b.getUnits());
+	}
+
+
+
+
+	
+	
+	
+
+	
+		
+
+	
+	
+	
+	
+
+}
+
+
+
+-----------------------------------------5-----5------5---5--------5----IOC AND DEPENDENCIES INJECTION-----5-------5-------5--------5--------5-----------5----
+
+
+
+
+Inversion of Control (IoC) is an important concept in Frameworks. Many times Inversion of Control (IoC) and Dependency Injection is used interchangeably but that’s wrong because IoC can be implemented in multiple patterns e.g.: Dependency Injection, Dependency Lookup.
+
+
+Dependency Injection is the most popularized implementation of IoC, which eliminates all lookup code, having the container automatically resolve dependencies. The container is wholly responsible for wiring up components, passing resolved objects into JavaBean constructors or properties. It is possible to use Setter Injection (use of object properties setter methods to inject dependencies) or Constructor Injection (use of Constructor arguments to inject dependencies).
+DI enables testability via setter (setter method) injection or constructor injection because we can inject mocks in unit tests. DI removes the need for an object to know about their dependencies and how to create them and this responsibility is delegated to an IoC container (e.g. Spring IoC container)
+
+Setter Injection – with setter injection, dependencies of an object are defined as object properties and these dependencies are injected using setter methods. Setter methods are invoked immediately after the object is instantiated by the container, before it handles any business methods and there is no threading issues in these properties. Properties can also be used to externalize simple properties such as int values, or other simple data type values. This is a basic Java class and there is no dependency on IoC, so it can be used in any environment, even without any container.
+
+public class MyBusinessObject implements MyBusinessInterface {
+  
+  private MyDependency myDependency;
+  
+  private int myIntValue;
+  
+  public void setMyDependency(MyDependency myDependency) {
+    this.myDependency = myDependency;
+  }
+  
+  public void setMyIntValue(int myIntValue) {
+    this.myIntValue = myIntValue;
+  }
+  
+}
+view rawMyBussinessObject.java hosted with 
+Dependencies can be injected using set methods, in our case: setMyDependency, setMyIntValue
+Constructor Injection – with constructor injection, dependencies are defined as constructor arguments and these dependencies are injected using constructor.
+
+public class MyBusinessObject implements MyBusinessInterface {
+  
+  private MyDependency myDependency;
+  
+  private int myIntValue;
+  
+  public MyBusinessObject(MyDependency myDependency, int myIntValue) {
+    this.myDependency = myDependency;
+    this.myIntValue = myIntValue;
+  }
+  
+}
+
+
+
+
+
+
+
